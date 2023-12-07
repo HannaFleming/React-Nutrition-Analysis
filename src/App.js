@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Nutrition } from "./Nutrition";
 import { LoaderPage } from "./LoaderPage";
+import './App.css';
 
 function App() {
 
@@ -54,18 +55,23 @@ function App() {
 
 
   return (
+    <div className = "container">
     <div>
       {stateLoader && <LoaderPage />}
 
       <h1>Nutrition Analysis</h1>
-      <form onSubmit={finalSearch}>
+      <form action=""
+      className="search-bar"
+      onSubmit={finalSearch}>
         <input
-          placeholder="Search..."
+         
           onChange={myRecipeSearch}
+          className="search" pattern=".*\S.*" required
         />
-        <button type="submit">Search</button>
+        <button className="search-btn" type="submit"></button>
       </form>
       <div>
+
         {
           myNutrition && <p>{myNutrition.calories} kcal</p>
         }
@@ -80,6 +86,7 @@ function App() {
             )
         }
       </div>
+    </div>
     </div>
   );
 }
